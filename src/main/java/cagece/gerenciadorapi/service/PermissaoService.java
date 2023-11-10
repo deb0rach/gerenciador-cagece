@@ -2,7 +2,6 @@ package cagece.gerenciadorapi.service;
 
 import cagece.gerenciadorapi.model.Empregado;
 import cagece.gerenciadorapi.model.Permissao;
-import cagece.gerenciadorapi.model.PermissaoGrupo;
 import cagece.gerenciadorapi.repository.PermissaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,26 +33,26 @@ public class PermissaoService {
         if(!Objects.nonNull(permissao) || permissao.isEmpty())
             throw new Exception("Permissão não encontrada");
 
-        if(verificarPermissao(empregadoId, permissaoId))
+        if(verificarPermissao(empregado, permissaoId))
             return true;
 
         if(substituicaoService.verificarSubstituicaoAtiva(empregadoId)) {
             Empregado empregadoSubstituido = substituicaoService.consultarEmpregadoSubstituidoPorEmpregadoSubstituto(empregadoId);
-            if(verificarPermissao(empregadoSubstituido.getId(), permissaoId))
+            if(verificarPermissao(Optional.ofNullable(empregadoSubstituido), permissaoId))
                 return true;
         }
         return false;
     }
-    public boolean verificarPermissao(Long empregadoId, Long permissaoId) {
-        List<Permissao> permissoes = consultarPorGrupoId(empregadoId);
+    public boolean verificarPermissao(Optional<Empregado> empregado, Long permissaoId) {
+        List<Permissao> permissoes = listarPorGrupoId(empregado.get().getCargo().getGrupo().getId());
         if(Objects.nonNull(permissoes) && !permissoes.isEmpty()) {
             boolean contemPermissao = permissoes.stream().anyMatch(obj -> obj.getId() == permissaoId);
-            if (contemPermissao)//quarkus
+            if (contemPermissao)
                 return true;
         }
         return false;
     }
-    public List<Permissao> consultarPorGrupoId(Long grupoId){
-        return repository.findByGruposId(grupoId);
+    public List<Permissao> listarPorGrupoId(Long grupoId){
+        return repository.findAllByGruposId(grupoId);
     }
 }

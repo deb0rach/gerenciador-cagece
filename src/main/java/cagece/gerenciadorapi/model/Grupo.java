@@ -20,4 +20,9 @@ public class Grupo implements Serializable {
 
     @Column(nullable = false)
     private String nome;
+
+    public Grupo(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 }

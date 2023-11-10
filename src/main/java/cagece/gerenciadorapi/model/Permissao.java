@@ -26,5 +26,4 @@ public class Permissao implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "grupo_id"))
     private Set<Grupo> grupos = new HashSet<>();
 
-
 }

@@ -21,4 +21,10 @@ public class Cargo implements Serializable {
 
     @ManyToOne
     private Grupo grupo;
+
+    public Cargo(Long id, String nome, Grupo grupo) {
+        this.id = id;
+        this.nome = nome;
+        this.grupo = grupo;
+    }
 }

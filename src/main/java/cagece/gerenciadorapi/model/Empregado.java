@@ -22,4 +22,12 @@ public class Empregado implements Serializable {
     @ManyToOne
     private Cargo cargo;
 
+    public Empregado() {
+    }
+
+    public Empregado(Long id, String nome, Cargo cargo) {
+        this.id = id;
+        this.nome = nome;
+        this.cargo = cargo;
+    }
 }

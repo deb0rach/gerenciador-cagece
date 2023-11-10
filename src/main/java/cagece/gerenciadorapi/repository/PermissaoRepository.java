@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface PermissaoRepository extends JpaRepository<Permissao, Long> {
-    List<Permissao> findByGruposId(Long grupoId);
+    List<Permissao> findAllByGruposId(Long grupoId);
 }
