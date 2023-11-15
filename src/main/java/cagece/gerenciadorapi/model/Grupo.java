@@ -25,4 +25,8 @@ public class Grupo implements Serializable {
         this.id = id;
         this.nome = nome;
     }
+
+    public Grupo() {
+
+    }
 }
