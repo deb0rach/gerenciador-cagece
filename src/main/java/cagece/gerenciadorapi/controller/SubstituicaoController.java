@@ -1,7 +1,6 @@
 package cagece.gerenciadorapi.controller;
 
 import cagece.gerenciadorapi.model.Substituicao;
-import cagece.gerenciadorapi.repository.SubstituicaoRepository;
 import cagece.gerenciadorapi.service.SubstituicaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/substituicao")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SubstituicaoController {
 
     @Autowired

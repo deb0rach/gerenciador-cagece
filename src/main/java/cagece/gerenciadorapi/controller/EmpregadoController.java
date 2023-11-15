@@ -1,7 +1,6 @@
 package cagece.gerenciadorapi.controller;
 
 import cagece.gerenciadorapi.model.Empregado;
-import cagece.gerenciadorapi.repository.EmpregadoRepository;
 import cagece.gerenciadorapi.service.EmpregadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

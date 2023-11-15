@@ -27,4 +27,8 @@ public class Cargo implements Serializable {
         this.nome = nome;
         this.grupo = grupo;
     }
+
+    public Cargo() {
+
+    }
 }
